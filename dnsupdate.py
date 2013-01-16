@@ -44,7 +44,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="dns updater")
     parser.add_argument('-d', dest='domain', help="domain that your record is stored under")
     parser.add_argument('-r', dest='record', help="record you wish to update")
-    parser.add_argument('-a', dest='address', default=False, action='store_true', help="ip you want to use")
+    parser.add_argument('-a', dest='address', default=False, action='store_true', help="use eth0 address")
 
     args = parser.parse_args()
     if args.address:
