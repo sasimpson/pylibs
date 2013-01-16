@@ -48,7 +48,11 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     if args.address:
-        ip = netifaces.ifaddresses('eth0')[netifaces.AF_INET][0]['addr']
+        ip = None
+        if 'eth0' in netifaces.interfaces():
+            ip = netifaces.ifaddresses('eth0')[netifaces.AF_INET][0]['addr']
+        elif 'wlan0' in netifaces.interfaces():
+            ip = netifaces.ifaddresses('wlan0')[netifaces.AF_INET][0]['addr']
         update_record(args.domain, args.record, ip)
     else: 
         update_record(args.domain, args.record)
